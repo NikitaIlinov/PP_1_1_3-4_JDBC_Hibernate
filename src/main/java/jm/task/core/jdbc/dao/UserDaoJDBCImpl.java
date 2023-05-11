@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    Connection connection = Util.getConnection();
+    private final Connection connection = Util.getConnection();
 
     public UserDaoJDBCImpl() {
 
@@ -33,8 +33,8 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = "DROP TABLE USERS";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            System.out.println("Такой таблицы не существует(");
+        } catch (SQLException ignored) {
+
         }
     }
 
